@@ -1,10 +1,8 @@
+/// <reference path="jquery.d.ts" />
 // Type definitions for Toastr 2.0.1
 // Project: https://github.com/CodeSeven/toastr
 // Definitions by: Boris Yankov <https://github.com/borisyankov/>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
-
-
-/// <reference path="../jquery/jquery.d.ts" />
 
 interface ToastrOptions {
 	/**

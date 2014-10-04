@@ -130,6 +130,13 @@
             }
         ];
     };
+
+    Bootstrapper.prototype.Services = function () {
+        var app = angular.module('app');
+        app.factory('datacontext', ['common', function (common) {
+                return new services.datacontext(common);
+            }]);
+    };
     return Bootstrapper;
 })();
 
@@ -138,5 +145,6 @@
     bootstrapper.Config();
     bootstrapper.ConfigExceptionHandler();
     bootstrapper.ConfigRoutes();
+    bootstrapper.Services();
 }());
 //# sourceMappingURL=bootstrapper.js.map

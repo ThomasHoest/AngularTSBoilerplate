@@ -1,22 +1,14 @@
-(function () {
-    'use strict';
-
-    var serviceId = 'datacontext';
-    angular.module('app').factory(serviceId, ['common', datacontext]);
-
-    function datacontext(common) {
-        var $q = common.$q;
-
-        var service = {
-            getPeople: getPeople,
-            getMessageCount: getMessageCount
+﻿var services;
+(function (services) {
+    var datacontext = (function () {
+        function datacontext(common) {
+            this.$q = common.$q;
+        }
+        datacontext.prototype.getMessageCount = function () {
+            return this.$q.when(72);
         };
 
-        return service;
-
-        function getMessageCount() { return $q.when(72); }
-
-        function getPeople() {
+        datacontext.prototype.getPeople = function () {
             var people = [
                 { firstName: 'John', lastName: 'Papa', age: 25, location: 'Florida' },
                 { firstName: 'Ward', lastName: 'Bell', age: 31, location: 'California' },
@@ -26,7 +18,10 @@
                 { firstName: 'Landon', lastName: 'Gates', age: 11, location: 'South Carolina' },
                 { firstName: 'Haley', lastName: 'Guthrie', age: 35, location: 'Wyoming' }
             ];
-            return $q.when(people);
-        }
-    }
-})();
+            return this.$q.when(people);
+        };
+        return datacontext;
+    })();
+    services.datacontext = datacontext;
+})(services || (services = {}));
+//# sourceMappingURL=datacontextts.js.map

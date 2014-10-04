@@ -1,10 +1,8 @@
+/// <reference path="jquery.d.ts" />
 // Type definitions for Angular JS 1.3+
 // Project: http://angularjs.org
 // Definitions by: Diego Vilar <http://github.com/diegovilar>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
-
-
-/// <reference path="../jquery/jquery.d.ts" />
 
 declare var angular: ng.IAngularStatic;
 

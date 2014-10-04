@@ -129,6 +129,11 @@
       }
     ];
   }
+
+  public Services() {
+    var app = angular.module('app');
+    app.factory('datacontext', ['common', (common) => { return new services.datacontext(common); }]);
+  }
 }
 
 (function () {
@@ -136,5 +141,6 @@
   bootstrapper.Config();
   bootstrapper.ConfigExceptionHandler();
   bootstrapper.ConfigRoutes();
+  bootstrapper.Services();
 } ());
 
