@@ -137,6 +137,10 @@
                 return new services.datacontext(common);
             }]);
     };
+
+    Bootstrapper.prototype.Controllers = function () {
+        angular.module('app').controller('shell', ['$rootScope', 'common', 'config', controllers.Shell]);
+    };
     return Bootstrapper;
 })();
 
@@ -146,5 +150,6 @@
     bootstrapper.ConfigExceptionHandler();
     bootstrapper.ConfigRoutes();
     bootstrapper.Services();
+    bootstrapper.Controllers();
 }());
 //# sourceMappingURL=bootstrapper.js.map

@@ -152,7 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\bootstrapper.ts" />
+    <TypeScriptCompile Include="app\layout\shellts.ts" />
     <TypeScriptCompile Include="app\services\datacontext.ts" />
+    <TypeScriptCompile Include="app\services\directivests.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-mocks.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-route.d.ts" />

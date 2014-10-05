@@ -134,6 +134,11 @@
     var app = angular.module('app');
     app.factory('datacontext', ['common', (common) => { return new services.datacontext(common); }]);
   }
+
+  public Controllers() {
+    angular.module('app').controller('shell',
+        ['$rootScope', 'common', 'config', controllers.Shell]);
+  }
 }
 
 (function () {
@@ -142,5 +147,6 @@
   bootstrapper.ConfigExceptionHandler();
   bootstrapper.ConfigRoutes();
   bootstrapper.Services();
+  bootstrapper.Controllers();
 } ());
 
