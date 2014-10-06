@@ -1,9 +1,8 @@
-﻿var controllers;
-(function (controllers) {
+﻿var Controllers;
+(function (Controllers) {
     var Shell = (function () {
         function Shell($rootScope, common, config) {
             var _this = this;
-            this.controllerId = 'shell';
             this.busyMessage = "Please wait...";
             this.isBusy = true;
             this.spinnerOptions = {
@@ -17,10 +16,10 @@
                 color: '#F58A00'
             };
             //var vm = this;
-            this.logSuccess = common.logger.getLogFn(this.controllerId, 'success');
+            this.logSuccess = common.logger.getLogFn(Shell.ControllerId, 'success');
             this.common = common;
             this.events = config.events;
-            this.activate();
+            this.Activate();
 
             $rootScope.$on('$routeChangeStart', function (event, next, current) {
                 _this.toggleSpinner(true);
@@ -34,16 +33,17 @@
                 _this.toggleSpinner(data.show);
             });
         }
-        Shell.prototype.activate = function () {
+        Shell.prototype.Activate = function () {
             this.logSuccess('Hot Towel Angular loaded!', null, true);
-            this.common.activateController([], this.controllerId);
+            this.common.activateController([], Shell.ControllerId);
         };
 
         Shell.prototype.toggleSpinner = function (on) {
             this.isBusy = on;
         };
+        Shell.ControllerId = 'shell';
         return Shell;
     })();
-    controllers.Shell = Shell;
-})(controllers || (controllers = {}));
-//# sourceMappingURL=shellts.js.map
+    Controllers.Shell = Shell;
+})(Controllers || (Controllers = {}));
+//# sourceMappingURL=shell.js.map

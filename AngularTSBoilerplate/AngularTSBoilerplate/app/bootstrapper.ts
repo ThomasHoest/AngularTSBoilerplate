@@ -136,8 +136,11 @@
   }
 
   public Controllers() {
-    angular.module('app').controller('shell',
-        ['$rootScope', 'common', 'config', controllers.Shell]);
+    angular.module('app').controller(Controllers.Shell.ControllerId,
+      ['$rootScope', 'common', 'config', Controllers.Shell]);
+
+    angular.module('app').controller(Controllers.Sidebar.ControllerId,
+        ['$route', 'config', 'routes', Controllers.Sidebar]);
   }
 }
 

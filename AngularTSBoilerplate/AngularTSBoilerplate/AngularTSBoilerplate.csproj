@@ -81,9 +81,8 @@
     <Content Include="app\dashboard\dashboard.html" />
     <Content Include="app\dashboard\dashboard.js" />
     <Content Include="app\layout\shell.html" />
-    <Content Include="app\layout\shell.js" />
     <Content Include="app\layout\sidebar.html" />
-    <Content Include="app\layout\sidebar.js" />
+    <TypeScriptCompile Include="app\layout\sidebar.ts" />
     <Content Include="app\layout\topnav.html" />
     <Content Include="app\layout\widgetheader.html" />
     <Content Include="app\services\directives.js" />
@@ -152,7 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\bootstrapper.ts" />
-    <TypeScriptCompile Include="app\layout\shellts.ts" />
+    <TypeScriptCompile Include="app\layout\shell.ts" />
     <TypeScriptCompile Include="app\services\datacontext.ts" />
     <TypeScriptCompile Include="app\services\directivests.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-animate.d.ts" />

@@ -1,7 +1,7 @@
-﻿module controllers {
-  export class Shell {
+﻿module Controllers {
 
-    private controllerId = 'shell';
+  export class Shell {
+    public static ControllerId = 'shell';
     public busyMessage: string = "Please wait...";
     public isBusy: boolean = true;
     public spinnerOptions = {
@@ -21,10 +21,10 @@
 
     constructor($rootScope, common, config) {
       //var vm = this;
-      this.logSuccess = common.logger.getLogFn(this.controllerId, 'success');
+      this.logSuccess = common.logger.getLogFn(Shell.ControllerId, 'success');
       this.common = common;
       this.events = config.events;
-      this.activate();
+      this.Activate();
 
       $rootScope.$on('$routeChangeStart',
           (event, next, current) => { this.toggleSpinner(true); }
@@ -39,9 +39,9 @@
         );
     }
 
-    private activate() {
+    private Activate() {
       this.logSuccess('Hot Towel Angular loaded!', null, true);
-      this.common.activateController([], this.controllerId);
+      this.common.activateController([], Shell.ControllerId);
     }
 
     public toggleSpinner(on) {

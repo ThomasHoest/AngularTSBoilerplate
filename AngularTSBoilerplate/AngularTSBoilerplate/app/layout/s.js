@@ -1,17 +1,16 @@
-﻿var Controllers;
-(function (Controllers) {
+﻿var Services;
+(function (Services) {
     var Sidebar = (function () {
         function Sidebar($route, config, routes) {
             this._routes = routes;
             this.$route = $route;
-            this.Activate();
         }
         Sidebar.prototype.Activate = function () {
             this.GetNavRoutes();
         };
 
         Sidebar.prototype.GetNavRoutes = function () {
-            this.navRoutes = this._routes.filter(function (r) {
+            this._navRoutes = this._routes.filter(function (r) {
                 return r.config.settings && r.config.settings.nav;
             }).sort(function (r1, r2) {
                 return r1.config.settings.nav - r2.config.settings.nav;
@@ -25,11 +24,10 @@
             var menuName = route.config.title;
             return this.$route.current.title.substr(0, menuName.length) === menuName ? 'current' : '';
         };
-        Sidebar.ControllerId = 'sidebar';
         return Sidebar;
     })();
-    Controllers.Sidebar = Sidebar;
-})(Controllers || (Controllers = {}));
+    Services.Sidebar = Sidebar;
+})(Services || (Services = {}));
 //(function () {
 //    'use strict';
 //    var controllerId = 'sidebar';
@@ -56,4 +54,4 @@
 //        }
 //    };
 //})();
-//# sourceMappingURL=sidebar.js.map
+//# sourceMappingURL=s.js.map
