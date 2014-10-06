@@ -132,7 +132,7 @@
 
   public Services() {
     var app = angular.module('app');
-    app.factory('datacontext', ['common', (common) => { return new services.datacontext(common); }]);
+    app.factory('datacontext', ['common', (common) => { return new Services.datacontext(common); }]);
   }
 
   public Controllers() {
@@ -146,13 +146,13 @@
 
   public Directives() {
     var app = angular.module('app');
-    app.directive('ccImgPerson', ['config', (config) => { return new Directives.ImgPerson(config); }]);
-    app.directive('ccSidebar', () => { return new Directives.SideBar(); });
-    app.directive('ccWidgetClose', () => { return new Directives.WidgetClose(); });
-    app.directive('ccWidgetMinimize', () => { return new Directives.WidgetMinimize(); });
-    app.directive('ccScrollToTop', ['$window',($window) => { return new Directives.ScrollToTop($window); }]);
-    app.directive('ccSpinner', ['$window',($window) => { return new Directives.Spinner($window); }]);
-    app.directive('ccWidgetHeader', () => { return new Directives.WidgetHeader(); });
+    app.directive('ccImgPerson', ['config', (config) => { return new Services.ImgPerson(config); }]);
+    app.directive('ccSidebar', () => { return new Services.SideBar(); });
+    app.directive('ccWidgetClose', () => { return new Services.WidgetClose(); });
+    app.directive('ccWidgetMinimize', () => { return new Services.WidgetMinimize(); });
+    app.directive('ccScrollToTop', ['$window',($window) => { return new Services.ScrollToTop($window); }]);
+    app.directive('ccSpinner', ['$window',($window) => { return new Services.Spinner($window); }]);
+    app.directive('ccWidgetHeader', () => { return new Services.WidgetHeader(); });
   }
 }
 

@@ -1,4 +1,4 @@
-﻿module services {
+﻿module Services {
 
   export class datacontext {
     private $q;
