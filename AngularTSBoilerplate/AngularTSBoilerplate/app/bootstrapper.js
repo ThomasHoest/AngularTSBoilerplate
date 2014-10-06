@@ -139,9 +139,35 @@
     };
 
     Bootstrapper.prototype.Controllers = function () {
-        angular.module('app').controller(Controllers.Shell.ControllerId, ['$rootScope', 'common', 'config', Controllers.Shell]);
+        var app = angular.module('app');
+        app.controller(Controllers.Shell.ControllerId, ['$rootScope', 'common', 'config', Controllers.Shell]);
 
-        angular.module('app').controller(Controllers.Sidebar.ControllerId, ['$route', 'config', 'routes', Controllers.Sidebar]);
+        app.controller(Controllers.Sidebar.ControllerId, ['$route', 'config', 'routes', Controllers.Sidebar]);
+    };
+
+    Bootstrapper.prototype.Directives = function () {
+        var app = angular.module('app');
+        app.directive('ccImgPerson', ['config', function (config) {
+                return new Directives.ImgPerson(config);
+            }]);
+        app.directive('ccSidebar', function () {
+            return new Directives.SideBar();
+        });
+        app.directive('ccWidgetClose', function () {
+            return new Directives.WidgetClose();
+        });
+        app.directive('ccWidgetMinimize', function () {
+            return new Directives.WidgetMinimize();
+        });
+        app.directive('ccScrollToTop', ['$window', function ($window) {
+                return new Directives.ScrollToTop($window);
+            }]);
+        app.directive('ccSpinner', ['$window', function ($window) {
+                return new Directives.Spinner($window);
+            }]);
+        app.directive('ccWidgetHeader', function () {
+            return new Directives.WidgetHeader();
+        });
     };
     return Bootstrapper;
 })();
@@ -151,7 +177,8 @@
     bootstrapper.Config();
     bootstrapper.ConfigExceptionHandler();
     bootstrapper.ConfigRoutes();
+    bootstrapper.Directives();
     bootstrapper.Services();
     bootstrapper.Controllers();
-}());
+})();
 //# sourceMappingURL=bootstrapper.js.map

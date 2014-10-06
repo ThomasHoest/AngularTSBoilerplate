@@ -136,20 +136,33 @@
   }
 
   public Controllers() {
-    angular.module('app').controller(Controllers.Shell.ControllerId,
+    var app = angular.module('app');
+    app.controller(Controllers.Shell.ControllerId,
       ['$rootScope', 'common', 'config', Controllers.Shell]);
 
-    angular.module('app').controller(Controllers.Sidebar.ControllerId,
+    app.controller(Controllers.Sidebar.ControllerId,
         ['$route', 'config', 'routes', Controllers.Sidebar]);
+  }
+
+  public Directives() {
+    var app = angular.module('app');
+    app.directive('ccImgPerson', ['config', (config) => { return new Directives.ImgPerson(config); }]);
+    app.directive('ccSidebar', () => { return new Directives.SideBar(); });
+    app.directive('ccWidgetClose', () => { return new Directives.WidgetClose(); });
+    app.directive('ccWidgetMinimize', () => { return new Directives.WidgetMinimize(); });
+    app.directive('ccScrollToTop', ['$window',($window) => { return new Directives.ScrollToTop($window); }]);
+    app.directive('ccSpinner', ['$window',($window) => { return new Directives.Spinner($window); }]);
+    app.directive('ccWidgetHeader', () => { return new Directives.WidgetHeader(); });
   }
 }
 
-(function () {
+(() => {
   var bootstrapper = new Bootstrapper();
   bootstrapper.Config();
   bootstrapper.ConfigExceptionHandler();
   bootstrapper.ConfigRoutes();
+  bootstrapper.Directives();
   bootstrapper.Services();
   bootstrapper.Controllers();
-} ());
+})();
 
