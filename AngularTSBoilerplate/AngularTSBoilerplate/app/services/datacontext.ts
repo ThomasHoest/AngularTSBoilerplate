@@ -1,6 +1,6 @@
 ﻿module Services {
 
-  export class datacontext {
+  export class Datacontext {
     private $q;
 
     constructor(common) {

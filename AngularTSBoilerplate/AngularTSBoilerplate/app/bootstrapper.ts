@@ -132,7 +132,7 @@
 
   public Services() {
     var app = angular.module('app');
-    app.factory('datacontext', ['common', (common) => { return new Services.datacontext(common); }]);
+    app.factory('datacontext', ['common', (common) => { return new Services.Datacontext(common); }]);
   }
 
   public Controllers() {
