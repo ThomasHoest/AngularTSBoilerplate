@@ -79,9 +79,9 @@
     <Content Include="app\common\logger.js" />
     <Content Include="app\common\spinner.js" />
     <Content Include="app\dashboard\dashboard.html" />
-    <Content Include="app\dashboard\dashboard.js" />
     <Content Include="app\layout\shell.html" />
     <Content Include="app\layout\sidebar.html" />
+    <TypeScriptCompile Include="app\dashboard\dashboard.ts" />
     <TypeScriptCompile Include="app\layout\sidebar.ts" />
     <Content Include="app\layout\topnav.html" />
     <Content Include="app\layout\widgetheader.html" />

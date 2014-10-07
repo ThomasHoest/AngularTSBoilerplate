@@ -143,6 +143,8 @@
         app.controller(Controllers.Shell.ControllerId, ['$rootScope', 'common', 'config', Controllers.Shell]);
 
         app.controller(Controllers.Sidebar.ControllerId, ['$route', 'config', 'routes', Controllers.Sidebar]);
+
+        app.controller(Controllers.Dashboard.ControllerId, ['common', 'datacontext', Controllers.Dashboard]);
     };
 
     Bootstrapper.prototype.Directives = function () {
