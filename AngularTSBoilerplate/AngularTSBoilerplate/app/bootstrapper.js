@@ -57,7 +57,6 @@
             if (appErrorPrefix && exception.message.indexOf(appErrorPrefix) === 0) {
                 return;
             }
-
             var errorData = { exception: exception, cause: cause };
             var msg = appErrorPrefix + exception.message;
             logError(msg, errorData, true);
@@ -138,6 +137,21 @@
             }]);
     };
 
+    Bootstrapper.prototype.Modules = function () {
+        var commonModule = angular.module('common', []);
+        commonModule.provider('commonConfig', function () {
+            return new Modules.CommonConfig();
+        });
+        commonModule.factory('common', ['$q', '$rootScope', '$timeout', 'commonConfig', 'logger', function ($q, $rootScope, $timeout, commonConfig, logger) {
+                return new Modules.Common($q, $rootScope, $timeout, commonConfig, logger);
+            }]);
+
+        commonModule.factory('logger', ['$log', function ($log) {
+                return new Modules.Logger($log);
+            }]);
+        //commonModule.factory('spinner', ['common', 'commonConfig', (common, commonConfig) => { return new Modules.Spinner(common, commonConfig); }]);
+    };
+
     Bootstrapper.prototype.Controllers = function () {
         var app = angular.module('app');
         app.controller(Controllers.Shell.ControllerId, ['$rootScope', 'common', 'config', Controllers.Shell]);
@@ -176,6 +190,7 @@
 
 (function () {
     var bootstrapper = new Bootstrapper();
+    bootstrapper.Modules();
     bootstrapper.Config();
     bootstrapper.ConfigExceptionHandler();
     bootstrapper.ConfigRoutes();

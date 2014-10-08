@@ -20,4 +20,4 @@
     })();
     Modules.Spinner = Spinner;
 })(Modules || (Modules = {}));
-//# sourceMappingURL=spinner.js.map
+//# sourceMappingURL=spinnerts.js.map

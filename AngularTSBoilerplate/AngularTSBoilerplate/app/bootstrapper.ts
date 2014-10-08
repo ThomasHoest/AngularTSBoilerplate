@@ -54,10 +54,9 @@
   private ExtendExceptionHandler($delegate, config, logger) {
     var appErrorPrefix = config.appErrorPrefix;
     var logError = logger.getLogFn('app', 'error');
-    return function (exception, cause) {
+    return (exception, cause) => {
       $delegate(exception, cause);
       if (appErrorPrefix && exception.message.indexOf(appErrorPrefix) === 0) { return; }
-
       var errorData = { exception: exception, cause: cause };
       var msg = appErrorPrefix + exception.message;
       logError(msg, errorData, true);
@@ -135,6 +134,16 @@
     app.factory('datacontext', ['common', (common) => { return new Services.Datacontext(common); }]);
   }
 
+  public Modules() {
+    var commonModule = angular.module('common', []);
+    commonModule.provider('commonConfig', ()=> { return new Modules.CommonConfig(); });
+    commonModule.factory('common',
+      ['$q', '$rootScope', '$timeout', 'commonConfig', 'logger', ($q, $rootScope, $timeout, commonConfig, logger) => { return new Modules.Common($q, $rootScope, $timeout, commonConfig, logger); }]);
+
+    commonModule.factory('logger', ['$log', ($log) => { return new Modules.Logger($log); }]);
+    //commonModule.factory('spinner', ['common', 'commonConfig', (common, commonConfig) => { return new Modules.Spinner(common, commonConfig); }]);
+  }
+
   public Controllers() {
     var app = angular.module('app');
     app.controller(Controllers.Shell.ControllerId,
@@ -153,14 +162,15 @@
     app.directive('ccSidebar', () => { return new Services.SideBar(); });
     app.directive('ccWidgetClose', () => { return new Services.WidgetClose(); });
     app.directive('ccWidgetMinimize', () => { return new Services.WidgetMinimize(); });
-    app.directive('ccScrollToTop', ['$window',($window) => { return new Services.ScrollToTop($window); }]);
-    app.directive('ccSpinner', ['$window',($window) => { return new Services.Spinner($window); }]);
+    app.directive('ccScrollToTop', ['$window', ($window) => { return new Services.ScrollToTop($window); }]);
+    app.directive('ccSpinner', ['$window', ($window) => { return new Services.Spinner($window); }]);
     app.directive('ccWidgetHeader', () => { return new Services.WidgetHeader(); });
   }
 }
 
 (() => {
   var bootstrapper = new Bootstrapper();
+  bootstrapper.Modules();
   bootstrapper.Config();
   bootstrapper.ConfigExceptionHandler();
   bootstrapper.ConfigRoutes();

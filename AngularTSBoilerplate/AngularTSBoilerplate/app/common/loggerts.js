@@ -29,4 +29,4 @@
     })();
     Modules.Logger = Logger;
 })(Modules || (Modules = {}));
-//# sourceMappingURL=logger.js.map
+//# sourceMappingURL=loggerts.js.map
