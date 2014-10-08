@@ -9,9 +9,10 @@
 
     public getLogFn(moduleId, fnName) {
       fnName = fnName || 'log';
-     
+      
       var $log = this.$log;
-      return (msg, data, showToast) =>{
+      return (msg, data, showToast) => {
+        showToast = (showToast === undefined) ? true : showToast;
         var write = (fnName === 'error') ? $log.error : $log.log;
         var source = fnName ? '[' + fnName + '] ' : '';
         write(source, msg, data);

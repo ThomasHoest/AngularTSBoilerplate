@@ -9,6 +9,7 @@
 
             var $log = this.$log;
             return function (msg, data, showToast) {
+                showToast = (showToast === undefined) ? true : showToast;
                 var write = (fnName === 'error') ? $log.error : $log.log;
                 var source = fnName ? '[' + fnName + '] ' : '';
                 write(source, msg, data);
