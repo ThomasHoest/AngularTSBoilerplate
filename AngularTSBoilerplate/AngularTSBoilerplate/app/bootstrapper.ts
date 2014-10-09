@@ -154,6 +154,9 @@
 
     app.controller(Controllers.Dashboard.ControllerId,
       ['common', 'datacontext', Controllers.Dashboard]);
+
+    app.controller(Controllers.Admin.ControllerId,
+      ['common', Controllers.Admin]);
   }
 
   public Directives() {

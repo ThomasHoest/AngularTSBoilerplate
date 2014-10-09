@@ -159,6 +159,8 @@
         app.controller(Controllers.Sidebar.ControllerId, ['$route', 'config', 'routes', Controllers.Sidebar]);
 
         app.controller(Controllers.Dashboard.ControllerId, ['common', 'datacontext', Controllers.Dashboard]);
+
+        app.controller(Controllers.Admin.ControllerId, ['common', Controllers.Admin]);
     };
 
     Bootstrapper.prototype.Directives = function () {

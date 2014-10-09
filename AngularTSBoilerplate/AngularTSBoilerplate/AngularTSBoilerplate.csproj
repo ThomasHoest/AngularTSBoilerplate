@@ -78,6 +78,7 @@
     <Content Include="app\dashboard\dashboard.html" />
     <Content Include="app\layout\shell.html" />
     <Content Include="app\layout\sidebar.html" />
+    <TypeScriptCompile Include="app\admin\admints.ts" />
     <TypeScriptCompile Include="app\common\common.ts" />
     <TypeScriptCompile Include="app\common\logger.ts" />
     <TypeScriptCompile Include="app\common\spinner.ts" />
