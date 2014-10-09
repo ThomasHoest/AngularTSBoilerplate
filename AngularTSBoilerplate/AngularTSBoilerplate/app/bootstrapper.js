@@ -149,7 +149,14 @@
         commonModule.factory('logger', ['$log', function ($log) {
                 return new Modules.Logger($log);
             }]);
-        //commonModule.factory('spinner', ['common', 'commonConfig', (common, commonConfig) => { return new Modules.Spinner(common, commonConfig); }]);
+        commonModule.factory('spinner', ['common', 'commonConfig', function (common, commonConfig) {
+                return new Modules.Spinner(common, commonConfig);
+            }]);
+
+        var bootstrapModule = angular.module('common.bootstrap', ['ui.bootstrap']);
+        bootstrapModule.factory('bootstrap.dialog', ['$modal', '$templateCache', function ($modal, $templateCache) {
+                return new Modules.ModalDialog($modal, $templateCache);
+            }]);
     };
 
     Bootstrapper.prototype.Controllers = function () {

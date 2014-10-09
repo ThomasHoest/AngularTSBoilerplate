@@ -141,7 +141,10 @@
       ['$q', '$rootScope', '$timeout', 'commonConfig', 'logger', ($q, $rootScope, $timeout, commonConfig, logger) => { return new Modules.Common($q, $rootScope, $timeout, commonConfig, logger); }]);
 
     commonModule.factory('logger', ['$log', ($log) => { return new Modules.Logger($log); }]);
-    //commonModule.factory('spinner', ['common', 'commonConfig', (common, commonConfig) => { return new Modules.Spinner(common, commonConfig); }]);
+    commonModule.factory('spinner', ['common', 'commonConfig', (common, commonConfig) => { return new Modules.Spinner(common, commonConfig); }]);
+    
+    var bootstrapModule = angular.module('common.bootstrap', ['ui.bootstrap']);
+    bootstrapModule.factory('bootstrap.dialog', ['$modal', '$templateCache', ($modal, $templateCache) => {return new Modules.ModalDialog($modal, $templateCache);}]);
   }
 
   public Controllers() {
